@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>qCT preprod vs staging Comparison Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .summary-box {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        .summary-item {
+            flex: 1;
+            padding: 10px;
+            background-color: #f1f8ff;
+            border-left: 3px solid #2980b9;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .match {
+            color: #27ae60;
+        }
+        .mismatch {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .filters {
+            margin: 20px 0;
+            display: flex;
+            gap: 15px;
+        }
+        button {
+            padding: 6px 12px;
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button.active {
+            background-color: #3498db;
+            color: white;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .details-section {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 5px;
+            display: none;
+            font-size: 0.9em;
+        }
+        .uid-info {
+            font-family: monospace;
+            word-break: break-all;
+            color: #666;
+        }
+        .show-details {
+            font-size: 0.8em;
+            color: #3498db;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .notes {
+            background-color: #fffde7;
+            padding: 10px;
+            border-left: 3px solid #fdd835;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>qCT preprod vs staging Comparison Results</h1>
+            <p>Source Server: <strong>preprod</strong> | Target Server: <strong>staging</strong></p>
+            <p>Generated on: 2025-05-20 10:32:22</p>
+        </div>
+        
+        <h2>Comparison Summary</h2>
+        <div class="summary-box">
+            <div class="summary-item">
+                <h3>Test Data Compared</h3>
+                <p>81</p>
+            </div>
+            <div class="summary-item">
+                <h3>Matching Status</h3>
+                <p>59 test data</p>
+            </div>
+            <div class="summary-item">
+                <h3>Different Status</h3>
+                <p>22 test data</p>
+            </div>
+        </div>
+        
+        <div class="summary-box">
+            <div class="summary-item">
+                <h3>Usecase Differences</h3>
+                <p>21 test data</p>
+            </div>
+            <div class="summary-item">
+                <h3>Triage Status Differences</h3>
+                <p>38 test data</p>
+            </div>
+        </div>
+        
+        <div class="filters">
+            <button id="showAll" class="active">Show All (81)</button>
+            <button id="showDifferences">Show Differences (22)</button>
+            <button id="showMatches">Show Matches (59)</button>
+        </div>
+        
+        <table id="folderTable">
+            <thead>
+                <tr>
+                    <th>Test Data</th>
+                    <th>Source Usecase</th>
+                    <th>Target Usecase</th>
+                    <th>Source Triage</th>
+                    <th>Target Triage</th>
+                    <th>Status</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr class="matching-row" id="row_1">
+                    <td>05mm_Body_05_Body_Std_Volume_Port_Ven_CE_6</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_1')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_1" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.12900196715779046135808214046148457364</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.63869258470658037049266747760847012945</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "91F5C583"</p>
+                            <p><strong>Target:</strong> "69112BE2"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_2">
+                    <td>05mm_Body_2000_Body_Std_Volume_Port_VenCoronal_CE_7</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.94693008351767922060528942756545654715', 'accessionNumber': 'Accession14', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.78470688765793617537733061553005743181', 'accessionNumber': 'Accession14', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.94693008351767922060528942756545654715', 'accessionNumber': 'Accession14', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.78470688765793617537733061553005743181', 'accessionNumber': 'Accession14', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_2')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_2" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.94693008351767922060528942756545654715</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.78470688765793617537733061553005743181</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "91F5C583"</p>
+                            <p><strong>Target:</strong> "69112BE2"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_3">
+                    <td>0625mm_DLH_7</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.90830847111344701477756687162295860804 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.90830847111344701477756687162295860804.'}</td>
+                    <td class="mismatch">qct</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.90830847111344701477756687162295860804 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.90830847111344701477756687162295860804.'}</td>
+                    <td class="mismatch">Critical</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_3')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_3" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.90830847111344701477756687162295860804</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.33173111094774019364501023707877738126</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "98546E37"</p>
+                            <p><strong>Target:</strong> "9D5F6309"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_4">
+                    <td>1000_Lung_HRCT_Non_ConAxial_4</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.66427694515304087855051992299677891050', 'accessionNumber': 'Accession119', 'debug_info': {'reason': '(Configurable) Slice thickness 10.0mm is greater than 6mm'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.12017133746294844706732111048021597334', 'accessionNumber': 'Accession114', 'debug_info': {'reason': '(Configurable) Slice thickness 10.0mm is greater than 6mm'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.66427694515304087855051992299677891050', 'accessionNumber': 'Accession119', 'debug_info': {'reason': '(Configurable) Slice thickness 10.0mm is greater than 6mm'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.12017133746294844706732111048021597334', 'accessionNumber': 'Accession114', 'debug_info': {'reason': '(Configurable) Slice thickness 10.0mm is greater than 6mm'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_4')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_4" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.66427694515304087855051992299677891050</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.12017133746294844706732111048021597334</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "A3B97142"</p>
+                            <p><strong>Target:</strong> "B36985AA"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_5">
+                    <td>10_Bone_Standard_Non_Con_7</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_5')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_5" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.90982843916603844574748711579558825018</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.40119243967815456172157280469855208092</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "A3B97142"</p>
+                            <p><strong>Target:</strong> "B36985AA"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_6">
+                    <td>10_Lung_HRCT_Non_Con_3</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_6')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_6" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.51141114001566970738744454705198815057</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11911635522482935649394892202154945047</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "A3B97142"</p>
+                            <p><strong>Target:</strong> "B36985AA"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_7">
+                    <td>10_Lung_Std_Volume_Non_Con_5</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_7')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_7" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.92408806934914112814157332713441700225</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.20425776810759888242787398515349037427</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "A3B97142"</p>
+                            <p><strong>Target:</strong> "B36985AA"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_8">
+                    <td>10_Sft_Tissue_Standard_Non_Con_6</td>
+                    <td class="mismatch">qct</td>
+                    <td class="mismatch">{'message': 'Processing failed for series 1.2.826.0.1.3680043.8.498.10565654453433847161314091719950901913. Please write to support@qure.ai for resolution.', 'success': False}</td>
+                    <td class="mismatch">Critical</td>
+                    <td class="mismatch">{'message': 'Processing failed for series 1.2.826.0.1.3680043.8.498.10565654453433847161314091719950901913. Please write to support@qure.ai for resolution.', 'success': False}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_8')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_8" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.12603112856805950259875287073999785862</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.10565654453433847161314091719950901913</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "A3B97142"</p>
+                            <p><strong>Target:</strong> "B36985AA"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_9">
+                    <td>1999</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_9')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_9" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.57900002002974365676822999870888427569</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11292438876900570317542418053740223869</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "54303125"</p>
+                            <p><strong>Target:</strong> "2D56FECC"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_10">
+                    <td>1mm_Bone_204</td>
+                    <td class="mismatch">qct</td>
+                    <td class="mismatch">{'message': 'Processing failed for series 1.2.826.0.1.3680043.8.498.84734480013522778684508083592109553986. Please write to support@qure.ai for resolution.', 'success': False}</td>
+                    <td class="mismatch">Critical</td>
+                    <td class="mismatch">{'message': 'Processing failed for series 1.2.826.0.1.3680043.8.498.84734480013522778684508083592109553986. Please write to support@qure.ai for resolution.', 'success': False}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_10')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_10" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.13301288614871713716856506511265620112</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.84734480013522778684508083592109553986</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "6188BEF0"</p>
+                            <p><strong>Target:</strong> "264481F5"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_11">
+                    <td>1mm_Lung_201</td>
+                    <td class="mismatch">Invalid JSON response</td>
+                    <td class="mismatch">{'message': 'Processing failed for series 1.2.826.0.1.3680043.8.498.11508779585288259381423697137654986616. Please write to support@qure.ai for resolution.', 'success': False}</td>
+                    <td class="mismatch">Invalid JSON response</td>
+                    <td class="mismatch">{'message': 'Processing failed for series 1.2.826.0.1.3680043.8.498.11508779585288259381423697137654986616. Please write to support@qure.ai for resolution.', 'success': False}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_11')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_11" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.63876619728419709859865612795167069191</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11508779585288259381423697137654986616</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "6188BEF0"</p>
+                            <p><strong>Target:</strong> "07C45C03"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_12">
+                    <td>1mm_Lung_302</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_12')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_12" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.91476546372076133059322560636445273103</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.91257446249259999725532935279045429656</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "4DF9EDAC"</p>
+                            <p><strong>Target:</strong> "67469CEC"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_13">
+                    <td>1mm_ST_205</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_13')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_13" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.48700091393355382674784049187954423058</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.87644974379521848610122109354273268819</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "6188BEF0"</p>
+                            <p><strong>Target:</strong> "264481F5"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_14">
+                    <td>1mm_ST_40s_301</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_14')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_14" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.62276695113324577933584660982225209228</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.59049090124769844123319456214037034379</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "4DF9EDAC"</p>
+                            <p><strong>Target:</strong> "67469CEC"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_15">
+                    <td>1mm_ST_70s_401</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_15')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_15" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.27576974639357702326992914612306292001</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.25552810383139924781002135802082008432</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "4DF9EDAC"</p>
+                            <p><strong>Target:</strong> "67469CEC"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_16">
+                    <td>1mm_ST_Pre_201</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_16')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_16" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11437423136580664053677721716905071853</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.53175713741186879819829433875643353126</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "4DF9EDAC"</p>
+                            <p><strong>Target:</strong> "67469CEC"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_17">
+                    <td>2000</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_17')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_17" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.45033422635939227590712610679399876829</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.53955495264820974925974512946375048019</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "54303125"</p>
+                            <p><strong>Target:</strong> "2D56FECC"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_18">
+                    <td>2001</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_18')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_18" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.55831004555135504206498944472788123076</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.17037748452476593528667907666626796375</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "54303125"</p>
+                            <p><strong>Target:</strong> "2D56FECC"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_19">
+                    <td>2mm_Body_20_Body_Axial_FC18_Port_Ven_CE_4</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_19')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_19" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.10412120575887458097167694149920980489</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.24908904698028161022999036654800026585</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "91F5C583"</p>
+                            <p><strong>Target:</strong> "69112BE2"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_20">
+                    <td>5mm_Bone_203</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_20')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_20" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.13040317203501938045651313055166392200</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.53785311678707959735810636355971933853</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "6188BEF0"</p>
+                            <p><strong>Target:</strong> "264481F5"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_21">
+                    <td>5mm_Lung_202</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_21')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_21" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11794162410276828359999417517689465102</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.29933699082873102881105817061671439773</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "6188BEF0"</p>
+                            <p><strong>Target:</strong> "07C45C03"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_22">
+                    <td>6585_5_303</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.72856825849073518955906626093017664192', 'accessionNumber': 'Accession43', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.11167137569580955534990521840842970332', 'accessionNumber': 'Accession43', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.72856825849073518955906626093017664192', 'accessionNumber': 'Accession43', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.11167137569580955534990521840842970332', 'accessionNumber': 'Accession43', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_22')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_22" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.72856825849073518955906626093017664192</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11167137569580955534990521840842970332</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "0E703DCF"</p>
+                            <p><strong>Target:</strong> "9725915E"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_23">
+                    <td>A</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_23')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_23" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.40700219190548193862899522066093907138</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.32733005823733834732288481521876781706</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "9C9137C9"</p>
+                            <p><strong>Target:</strong> "E2877F31"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_24">
+                    <td>ABDOMEN_Plain_5_mm_2_qer</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.44411632571430989807695921006034721261 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.44411632571430989807695921006034721261 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_24')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_24" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.44411632571430989807695921006034721261</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "3283F4C3"</p>
+                            <p><strong>Target:</strong> "9E04B4B0"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_25">
+                    <td>AiCE_10_6</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.80213567013776104496855808358229786556', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.11664339075944323823308215874036562416', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.80213567013776104496855808358229786556', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.11664339075944323823308215874036562416', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_25')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_25" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.80213567013776104496855808358229786556</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11664339075944323823308215874036562416</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "3B0388F3"</p>
+                            <p><strong>Target:</strong> "F82428B2"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_26">
+                    <td>AiCE_10_CE_12</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_26')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_26" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.35780763863887749674146056011712486808</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.31845818989302766591975971222076260318</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "3B0388F3"</p>
+                            <p><strong>Target:</strong> "F82428B2"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_27">
+                    <td>AiCE_10_CE_13</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.98366610786432045452660215686418390607 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.98366610786432045452660215686418390607.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.39140543960074137488395650104066827729 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.98366610786432045452660215686418390607 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.98366610786432045452660215686418390607.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.39140543960074137488395650104066827729 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_27')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_27" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.98366610786432045452660215686418390607</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.39140543960074137488395650104066827729</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "4F8D429E"</p>
+                            <p><strong>Target:</strong> "E08FF3AB"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_28">
+                    <td>AiCE_10_CE_16</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.10483889798000589794145809503748694101 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.10483889798000589794145809503748694101.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.66925667208208763943098806056966280446 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.10483889798000589794145809503748694101 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.10483889798000589794145809503748694101.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.66925667208208763943098806056966280446 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_28')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_28" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.10483889798000589794145809503748694101</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.66925667208208763943098806056966280446</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "4F8D429E"</p>
+                            <p><strong>Target:</strong> "E08FF3AB"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_29">
+                    <td>AiCE_10_CE_7</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_29')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_29" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11924248719565946487364780818240589725</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.72247603714637120592982337264905608099</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "A4D59EA7"</p>
+                            <p><strong>Target:</strong> "69854328"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_30">
+                    <td>AiCE_10_CE_8</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.12066769127463141474464245301855284952', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.83124650435772333335193512841148549327', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.12066769127463141474464245301855284952', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.83124650435772333335193512841148549327', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_30')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_30" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.12066769127463141474464245301855284952</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.83124650435772333335193512841148549327</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "3B0388F3"</p>
+                            <p><strong>Target:</strong> "F82428B2"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_31">
+                    <td>AiCE_2000_CE_14</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.96313736502403100775666463153380404342 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.96313736502403100775666463153380404342.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.54027685344766327713219886338503687154 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.96313736502403100775666463153380404342 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.96313736502403100775666463153380404342.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.54027685344766327713219886338503687154 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_31')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_31" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.96313736502403100775666463153380404342</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.54027685344766327713219886338503687154</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "4F8D429E"</p>
+                            <p><strong>Target:</strong> "E08FF3AB"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_32">
+                    <td>AiCE_2000_CE_15</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.11715138320911524827077484250144911164 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.11715138320911524827077484250144911164.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.99660853795299198630993106743714042029 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.11715138320911524827077484250144911164 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.11715138320911524827077484250144911164.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.99660853795299198630993106743714042029 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_32')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_32" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11715138320911524827077484250144911164</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.99660853795299198630993106743714042029</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "4F8D429E"</p>
+                            <p><strong>Target:</strong> "E08FF3AB"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_33">
+                    <td>AiCE_2000_CE_17</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.23259669097324125440553022398711466526 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.23259669097324125440553022398711466526.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.81015622143294018712276261024683020391 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.23259669097324125440553022398711466526 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.23259669097324125440553022398711466526.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.81015622143294018712276261024683020391 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_33')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_33" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.23259669097324125440553022398711466526</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.81015622143294018712276261024683020391</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "4F8D429E"</p>
+                            <p><strong>Target:</strong> "E08FF3AB"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_34">
+                    <td>AiCE_2000_CE_18</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.91648038474904383219666132255856652399 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.91648038474904383219666132255856652399.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.11274901852595017187429784478626783703 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.91648038474904383219666132255856652399 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.91648038474904383219666132255856652399.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.11274901852595017187429784478626783703 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_34')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_34" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.91648038474904383219666132255856652399</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11274901852595017187429784478626783703</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "4F8D429E"</p>
+                            <p><strong>Target:</strong> "E08FF3AB"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_35">
+                    <td>AiCE_2000_CE_8</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.25249266709701968491333851602594368328', 'accessionNumber': 'Accession4', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.56409920585639611134379810632638696352', 'accessionNumber': 'Accession4', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.25249266709701968491333851602594368328', 'accessionNumber': 'Accession4', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.56409920585639611134379810632638696352', 'accessionNumber': 'Accession4', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_35')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_35" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.25249266709701968491333851602594368328</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.56409920585639611134379810632638696352</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "A4D59EA7"</p>
+                            <p><strong>Target:</strong> "69854328"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_36">
+                    <td>AiCE_2000_CE_9</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.27846217390924321505416251194118947863', 'accessionNumber': 'Accession4', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.42314916074429309927672629535697091298', 'accessionNumber': 'Accession4', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.27846217390924321505416251194118947863', 'accessionNumber': 'Accession4', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.42314916074429309927672629535697091298', 'accessionNumber': 'Accession4', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_36')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_36" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.27846217390924321505416251194118947863</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.42314916074429309927672629535697091298</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "A4D59EA7"</p>
+                            <p><strong>Target:</strong> "69854328"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_37">
+                    <td>AiCE_20_3</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.45911081796442101451471069654749232892', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.54597646705320300625601966417341421671', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.45911081796442101451471069654749232892', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.54597646705320300625601966417341421671', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_37')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_37" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.45911081796442101451471069654749232892</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.54597646705320300625601966417341421671</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "3B0388F3"</p>
+                            <p><strong>Target:</strong> "F82428B2"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_38">
+                    <td>AiCE_20_CE_10</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_38')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_38" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.21319538287295045925723254480891443801</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.12286722739600192455285195307055898759</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "3B0388F3"</p>
+                            <p><strong>Target:</strong> "F82428B2"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_39">
+                    <td>AiCE_20_CE_11</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_39')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_39" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.10514208198382693280295425837897897223</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.82377672403893624110958975014370935245</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "3B0388F3"</p>
+                            <p><strong>Target:</strong> "F82428B2"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_40">
+                    <td>AiCE_20_CE_5</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_40')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_40" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.74577502522265274607355639395182523737</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.44246088738728507976785972002110698847</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "A4D59EA7"</p>
+                            <p><strong>Target:</strong> "69854328"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_41">
+                    <td>AiCE_20_CE_7</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.56688351603797375980807746047463983106', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.14700523649199724418751297348079433961', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.56688351603797375980807746047463983106', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.14700523649199724418751297348079433961', 'accessionNumber': 'Accession6', 'debug_info': {'reason': '(Configurable) Unacceptable lung coverage.'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_41')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_41" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.56688351603797375980807746047463983106</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.14700523649199724418751297348079433961</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "3B0388F3"</p>
+                            <p><strong>Target:</strong> "F82428B2"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_42">
+                    <td>AiCE_20_CE_9</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_42')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_42" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.73918570417378280655148675731624602420</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.68223033021335325823189736011853095079</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "3B0388F3"</p>
+                            <p><strong>Target:</strong> "F82428B2"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_43">
+                    <td>B</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_43')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_43" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.10511968985906045266714398780830638541</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.23104711696285887697881637482812211411</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "9C9137C9"</p>
+                            <p><strong>Target:</strong> "E2877F31"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_44">
+                    <td>Bone_AiCE_10_CE_10</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_44')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_44" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.75499474795888409170026164271168288521</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.65799148402800870554902226419475400695</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "A4D59EA7"</p>
+                            <p><strong>Target:</strong> "69854328"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_45">
+                    <td>Bone_AiCE_10_CE_19</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.60166520600157783559345660386111784439 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.60166520600157783559345660386111784439.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.43889533380741074536564161817323334175 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.60166520600157783559345660386111784439 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.60166520600157783559345660386111784439.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.43889533380741074536564161817323334175 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_45')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_45" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.60166520600157783559345660386111784439</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.43889533380741074536564161817323334175</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "4F8D429E"</p>
+                            <p><strong>Target:</strong> "E08FF3AB"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_46">
+                    <td>C</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_46')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_46" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.78991223258476141052271068392554011041</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.80978056439617662528885720776265017351</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "9C9137C9"</p>
+                            <p><strong>Target:</strong> "E2877F31"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_47">
+                    <td>CTCA_2</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_47')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_47" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.72571407790750831873130865579945999902</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.77267973328402446134476845440349483459</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "0E703DCF"</p>
+                            <p><strong>Target:</strong> "9725915E"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_48">
+                    <td>CTCA_3</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_48')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_48" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.82417725596748711284138204116012179555</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.58718381758795674534667155790448759065</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "8AB193C1"</p>
+                            <p><strong>Target:</strong> "FC226B47"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_49">
+                    <td>CTCA_HIRES_3</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_49')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_49" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.99160909789511107096965070893392236699</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.71365980308897002448079046846929851117</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "43C3607D"</p>
+                            <p><strong>Target:</strong> "87904B4C"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_50">
+                    <td>CT_Thorax_Plain_5_mm_2_qer</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.44411632571430989807695921006034721261 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.44411632571430989807695921006034721261 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_50')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_50" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.44411632571430989807695921006034721261</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "0F8A521F"</p>
+                            <p><strong>Target:</strong> "5C053631"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_51">
+                    <td>Calcium_Score_DFOV_25cms_2</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_51')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_51" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11404056773272998836640306273380339719</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.50702754353745314818921542564798472770</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "8AB193C1"</p>
+                            <p><strong>Target:</strong> "FC226B47"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_52">
+                    <td>Centre_Phase_DLH_302</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_52')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_52" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.37598650077386175145383765727664026986</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.38723846913765104766817727842960053658</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "8AB193C1"</p>
+                            <p><strong>Target:</strong> "FC226B47"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_53">
+                    <td>Chest_Plain_5_mm_2_qer</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.44411632571430989807695921006034721261 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.44411632571430989807695921006034721261 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_53')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_53" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.78224994373899269813536490558732651047</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.44411632571430989807695921006034721261</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "504E2EA9"</p>
+                            <p><strong>Target:</strong> "3E291F84"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_54">
+                    <td>LC-474_for_gsps</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_54')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_54" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.45049774777519457461244980792785130436</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.21846210189149896714821287396937886434</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "8973B2D6"</p>
+                            <p><strong>Target:</strong> "BC9473F8"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_55">
+                    <td>LC-482</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.12415320200877534695258133243787841318 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.12415320200877534695258133243787841318.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.53439903838747966857253716964523888960 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.12415320200877534695258133243787841318 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.12415320200877534695258133243787841318.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.53439903838747966857253716964523888960 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_55')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_55" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.12415320200877534695258133243787841318</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.53439903838747966857253716964523888960</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "B937F528"</p>
+                            <p><strong>Target:</strong> "84D24C77"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_56">
+                    <td>LC-504</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_56')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_56" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.87504824733124952700847387743192900319</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.59456346585936111993453287594520237195</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "6FC7B22A"</p>
+                            <p><strong>Target:</strong> "B295B772"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_57">
+                    <td>LC_496</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_57')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_57" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.42521407076080988409511176150496260105</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.20358808553918958172728275043101296984</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "46DE1056"</p>
+                            <p><strong>Target:</strong> "74DA039A"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_58">
+                    <td>LC_508</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_58')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_58" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.71896345719145261869158770972206056872</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.10409990147853893423345489754211759727</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "C9FBC92A"</p>
+                            <p><strong>Target:</strong> "BC4DFC52"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_59">
+                    <td>Localizers_1</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.74275295272125610831650523609814668040', 'accessionNumber': 'Accession14', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.52741209168559825979287756794580498199', 'accessionNumber': 'Accession114', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.74275295272125610831650523609814668040', 'accessionNumber': 'Accession14', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.52741209168559825979287756794580498199', 'accessionNumber': 'Accession114', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_59')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_59" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.74275295272125610831650523609814668040</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.52741209168559825979287756794580498199</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "91F5C583"</p>
+                            <p><strong>Target:</strong> "B36985AA"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_60">
+                    <td>Localizers_101</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.94217078801461144783119019828271157809', 'accessionNumber': 'Accession98', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.11585820124115533200408463205785973366', 'accessionNumber': 'Accession95', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.94217078801461144783119019828271157809', 'accessionNumber': 'Accession98', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.11585820124115533200408463205785973366', 'accessionNumber': 'Accession95', 'debug_info': {'reason': 'Orientation is not axial'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_60')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_60" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.94217078801461144783119019828271157809</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11585820124115533200408463205785973366</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "6188BEF0"</p>
+                            <p><strong>Target:</strong> "07C45C03"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_61">
+                    <td>Lung_125mm_302</td>
+                    <td class="mismatch">qct</td>
+                    <td class="mismatch">{'message': 'Processing failed for series 1.2.826.0.1.3680043.8.498.46328839168736533265018485041938612292. Please write to support@qure.ai for resolution.', 'success': False}</td>
+                    <td class="mismatch">Critical</td>
+                    <td class="mismatch">{'message': 'Processing failed for series 1.2.826.0.1.3680043.8.498.46328839168736533265018485041938612292. Please write to support@qure.ai for resolution.', 'success': False}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_61')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_61" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.86750837906473309574686153031540992154</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.46328839168736533265018485041938612292</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "CF6A4F53"</p>
+                            <p><strong>Target:</strong> "380646B5"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_62">
+                    <td>Lung_AiCE_05_CE_12</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.10067114587425395426332265955894218293 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.10067114587425395426332265955894218293.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.23003324375555697611799583420641868742 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.10067114587425395426332265955894218293 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.10067114587425395426332265955894218293.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.23003324375555697611799583420641868742 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_62')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_62" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.10067114587425395426332265955894218293</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.23003324375555697611799583420641868742</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "4F8D429E"</p>
+                            <p><strong>Target:</strong> "E08FF3AB"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_63">
+                    <td>Lung_AiCE_05_CE_6</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_63')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_63" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11949050989840465407887932875414979009</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.10973992701498503034976152208333653929</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "A4D59EA7"</p>
+                            <p><strong>Target:</strong> "69854328"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_64">
+                    <td>Lungs_125mm_303</td>
+                    <td class="mismatch">qct</td>
+                    <td class="mismatch">{'message': 'Processing failed for series 1.2.826.0.1.3680043.8.498.10051664678933507729651252658902320486. Please write to support@qure.ai for resolution.', 'success': False}</td>
+                    <td class="mismatch">Critical</td>
+                    <td class="mismatch">{'message': 'Processing failed for series 1.2.826.0.1.3680043.8.498.10051664678933507729651252658902320486. Please write to support@qure.ai for resolution.', 'success': False}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_64')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_64" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.60243589888103260080234292599765749389</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.10051664678933507729651252658902320486</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "43C3607D"</p>
+                            <p><strong>Target:</strong> "87904B4C"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_65">
+                    <td>Lungs_25mm_301</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_65')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_65" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.60994701031084848198239733928354461073</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.94604115856423795197655641850771463478</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "43C3607D"</p>
+                            <p><strong>Target:</strong> "87904B4C"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_66">
+                    <td>Lungs_25mm_DLM_301</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_66')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_66" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.33663072635513307683952396887509535167</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.13073510748650725311615012385620601907</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "8AB193C1"</p>
+                            <p><strong>Target:</strong> "FC226B47"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_67">
+                    <td>Lungs_DLM_304</td>
+                    <td class="mismatch">qct</td>
+                    <td class="mismatch">{'message': 'Processing failed for series 1.2.826.0.1.3680043.8.498.12027036952709696650355220047795837103. Please write to support@qure.ai for resolution.', 'success': False}</td>
+                    <td class="mismatch">Routine</td>
+                    <td class="mismatch">{'message': 'Processing failed for series 1.2.826.0.1.3680043.8.498.12027036952709696650355220047795837103. Please write to support@qure.ai for resolution.', 'success': False}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_67')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_67" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.61285222386447846749992748989866674345</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.12027036952709696650355220047795837103</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "8AB193C1"</p>
+                            <p><strong>Target:</strong> "FC226B47"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_68">
+                    <td>MULTIPHASE_DLM_304</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.81188672400646525682002852342003223291', 'accessionNumber': 'Accession33', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.59164684523892335512743495802031807209', 'accessionNumber': 'Accession33', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.81188672400646525682002852342003223291', 'accessionNumber': 'Accession33', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.59164684523892335512743495802031807209', 'accessionNumber': 'Accession33', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_68')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_68" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.81188672400646525682002852342003223291</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.59164684523892335512743495802031807209</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "43C3607D"</p>
+                            <p><strong>Target:</strong> "87904B4C"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_69">
+                    <td>SSFreeze_42__Original_Series_302_402</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_69')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_69" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.36795445451421825724478696007769044746</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.12834549682027600031812867660791644407</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "43C3607D"</p>
+                            <p><strong>Target:</strong> "87904B4C"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_70">
+                    <td>Smart_Prep_Series_201</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.70019133222961154882237858932283923225', 'accessionNumber': 'Accession33', 'debug_info': {'reason': 'No valid instances found'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.28928359293706173414615110452187014234', 'accessionNumber': 'Accession33', 'debug_info': {'reason': 'No valid instances found'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.70019133222961154882237858932283923225', 'accessionNumber': 'Accession33', 'debug_info': {'reason': 'No valid instances found'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.28928359293706173414615110452187014234', 'accessionNumber': 'Accession33', 'debug_info': {'reason': 'No valid instances found'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_70')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_70" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.70019133222961154882237858932283923225</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.28928359293706173414615110452187014234</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "43C3607D"</p>
+                            <p><strong>Target:</strong> "87904B4C"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_71">
+                    <td>Smart_Prep_Series_202</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.98768180087061600764946356721195024612', 'accessionNumber': 'Accession45', 'debug_info': {'reason': 'No valid instances found'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.13225044986494755604749695379201501499', 'accessionNumber': 'Accession45', 'debug_info': {'reason': 'No valid instances found'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.98768180087061600764946356721195024612', 'accessionNumber': 'Accession45', 'debug_info': {'reason': 'No valid instances found'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.13225044986494755604749695379201501499', 'accessionNumber': 'Accession45', 'debug_info': {'reason': 'No valid instances found'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_71')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_71" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.98768180087061600764946356721195024612</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.13225044986494755604749695379201501499</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "CF6A4F53"</p>
+                            <p><strong>Target:</strong> "380646B5"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_72">
+                    <td>Temporal_SmartPhase_CTCA__SSF_SmartPhase_DLM_301</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.12157113733568935335775010228606951492', 'accessionNumber': 'Accession45', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.78445158872472145555963500742068572118', 'accessionNumber': 'Accession45', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.12157113733568935335775010228606951492', 'accessionNumber': 'Accession45', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.78445158872472145555963500742068572118', 'accessionNumber': 'Accession45', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_72')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_72" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.12157113733568935335775010228606951492</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.78445158872472145555963500742068572118</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "CF6A4F53"</p>
+                            <p><strong>Target:</strong> "380646B5"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_73">
+                    <td>Temporal_SmartPhase_CTCA__SSF_SmartPhase_DLM_302</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.98385539546823110842919583475599610707', 'accessionNumber': 'Accession33', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="match">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.10246601096589969110610902383298687099', 'accessionNumber': 'Accession33', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.98385539546823110842919583475599610707', 'accessionNumber': 'Accession33', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Use case not implemented', 'seriesInstanceUID': '1.2.826.0.1.3680043.8.498.10246601096589969110610902383298687099', 'accessionNumber': 'Accession33', 'debug_info': {'reason': 'Spacing of zero between slices is not allowed.'}, 'result': {}}</td>
+                    <td class="match">Match (debug reason)</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_73')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_73" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.98385539546823110842919583475599610707</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.10246601096589969110610902383298687099</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "43C3607D"</p>
+                            <p><strong>Target:</strong> "87904B4C"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_74">
+                    <td>fuji_qure</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_74')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_74" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.75069994440545288558902112433202732686</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.10390098727368884130962450833440131903</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "3E57704D"</p>
+                            <p><strong>Target:</strong> "0877EEE0"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_75">
+                    <td>input_ct</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_75')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_75" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.17285441565293234136127738004743753048</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.75994160048532874920025512601930553577</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "5DB26790"</p>
+                            <p><strong>Target:</strong> "97F8B1A2"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_76">
+                    <td>insufficient_gpu</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_76')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_76" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11554386748497500614590182874962833898</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.75837067851562724260828257960406778232</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "31D896EB"</p>
+                            <p><strong>Target:</strong> "DB557A2E"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_77">
+                    <td>lung_05_Lung_Std_Axial_Port_Ven_CE_5</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Invalid JSON response</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_77')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_77" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.12330662544806922799799717320442259513</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.72813431457922459799257527902306095588</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "91F5C583"</p>
+                            <p><strong>Target:</strong> "69112BE2"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_78">
+                    <td>multi_nodule_same_slice</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="mismatch">Critical</td>
+                    <td class="mismatch">Routine</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_78')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_78" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.78390059290131316174551522946978839577</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.10780337766938210382410919660021527287</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "100FD1B9"</p>
+                            <p><strong>Target:</strong> "A39206D4"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_79">
+                    <td>sc_rejection_01</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.13271197249818354639933905323920678605 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.13271197249818354639933905323920678605.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.23221161926142958828361594978806192196 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.13271197249818354639933905323920678605 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.13271197249818354639933905323920678605.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.23221161926142958828361594978806192196 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_79')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_79" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.13271197249818354639933905323920678605</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.23221161926142958828361594978806192196</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "92E10C06"</p>
+                            <p><strong>Target:</strong> "C9CEAF8F"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="difference-row" id="row_80">
+                    <td>sc_rejection_02</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.13271197249818354639933905323920678605 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.13271197249818354639933905323920678605.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.23221161926142958828361594978806192196 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Series with resource_uid 1.2.826.0.1.3680043.8.498.13271197249818354639933905323920678605 has not yet been invoked for computation. You can invoke by doing a GET on https://platformapi.qure.ai/compute/1.2.826.0.1.3680043.8.498.13271197249818354639933905323920678605.'}</td>
+                    <td class="mismatch">{'success': False, 'message': 'Image Series with resource_uid 1.2.826.0.1.3680043.8.498.23221161926142958828361594978806192196 is under process. Please check back in some time.'}</td>
+                    <td class="mismatch">Difference</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_80')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_80" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.13271197249818354639933905323920678605</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.23221161926142958828361594978806192196</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "ED72FAFC"</p>
+                            <p><strong>Target:</strong> "CCA19185"</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="matching-row" id="row_81">
+                    <td>scans</td>
+                    <td class="match">qct</td>
+                    <td class="match">qct</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Critical</td>
+                    <td class="match">Match</td>
+                    <td><span class="show-details" onclick="toggleDetails('details_81')">Show Details</span></td>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                        <div id="details_81" class="details-section">
+                            <p><strong>Series UIDs</strong>:</p>
+                            <p><strong>Source:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.11940238396137257621773851305066333885</span></p>
+                            <p><strong>Target:</strong> <span class="uid-info">1.2.826.0.1.3680043.8.498.86224599144544792163047215838986948768</span></p>
+                            <p><strong>Patient IDs</strong>:</p>
+                            <p><strong>Source:</strong> "0EABFF74"</p>
+                            <p><strong>Target:</strong> "1A19D24B"</p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="footer">
+            <p>Generated by qCT Comparison Tool</p>
+        </div>
+    </div>
+    
+    <script>
+        // Filter functionality
+        document.getElementById('showAll').addEventListener('click', function() {
+            showAll();
+            setActiveButton(this);
+        });
+        
+        document.getElementById('showDifferences').addEventListener('click', function() {
+            showDifferences();
+            setActiveButton(this);
+        });
+        
+        document.getElementById('showMatches').addEventListener('click', function() {
+            showMatches();
+            setActiveButton(this);
+        });
+        
+        function showAll() {
+            var rows = document.querySelectorAll('tr.matching-row, tr.difference-row');
+            rows.forEach(function(row) {
+                row.style.display = '';
+                // Hide any open details
+                var detailsId = row.id.replace('row', 'details');
+                var details = document.getElementById(detailsId);
+                if (details) {
+                    details.style.display = 'none';
+                }
+            });
+        }
+        
+        function showDifferences() {
+            var rows = document.querySelectorAll('tr.matching-row');
+            rows.forEach(function(row) {
+                row.style.display = 'none';
+                // Also hide the details row
+                var nextRow = row.nextElementSibling;
+                if (nextRow) {
+                    nextRow.style.display = 'none';
+                }
+            });
+            
+            var rows = document.querySelectorAll('tr.difference-row');
+            rows.forEach(function(row) {
+                row.style.display = '';
+                // Show the row but keep details hidden
+                var nextRow = row.nextElementSibling;
+                if (nextRow) {
+                    nextRow.style.display = '';
+                    var detailsElement = nextRow.querySelector('.details-section');
+                    if (detailsElement) {
+                        detailsElement.style.display = 'none';
+                    }
+                }
+            });
+        }
+        
+        function showMatches() {
+            var rows = document.querySelectorAll('tr.difference-row');
+            rows.forEach(function(row) {
+                row.style.display = 'none';
+                // Also hide the details row
+                var nextRow = row.nextElementSibling;
+                if (nextRow) {
+                    nextRow.style.display = 'none';
+                }
+            });
+            
+            var rows = document.querySelectorAll('tr.matching-row');
+            rows.forEach(function(row) {
+                row.style.display = '';
+                // Show the row but keep details hidden
+                var nextRow = row.nextElementSibling;
+                if (nextRow) {
+                    nextRow.style.display = '';
+                    var detailsElement = nextRow.querySelector('.details-section');
+                    if (detailsElement) {
+                        detailsElement.style.display = 'none';
+                    }
+                }
+            });
+        }
+        
+        function toggleDetails(detailsId) {
+            var details = document.getElementById(detailsId);
+            if (details.style.display === 'block') {
+                details.style.display = 'none';
+            } else {
+                details.style.display = 'block';
+            }
+        }
+        
+        function setActiveButton(button) {
+            document.querySelectorAll('.filters button').forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+        }
+    </script>
+</body>
+</html>
