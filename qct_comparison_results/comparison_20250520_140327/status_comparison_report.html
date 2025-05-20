@@ -160,7 +160,7 @@
         <div class="header">
             <h1>qCT preprod vs staging Comparison Results</h1>
             <p>Source Server: <strong>preprod</strong> | Target Server: <strong>staging</strong></p>
-            <p>Generated on: 2025-05-20 10:41:27</p>
+            <p>Generated on: 2025-05-20 14:03:27</p>
         </div>
         
         <h2>Comparison Summary</h2>
@@ -2040,9 +2040,12 @@
         
         function toggleDetails(detailsId) {
             var details = document.getElementById(detailsId);
+            var detailsRow = details.parentElement.parentElement; // <td> -> <tr>
             if (details.style.display === 'block') {
                 details.style.display = 'none';
             } else {
+                // Make sure the row is visible
+                detailsRow.style.display = '';
                 details.style.display = 'block';
             }
         }
