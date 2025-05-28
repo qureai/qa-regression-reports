@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Patient Output File Summary</title>
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: #f4f6f8;
+        padding: 30px;
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+    }
+    .filter-buttons {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    .filter-button {
+        background: #e0e0e0;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .filter-button:hover {
+        background: #3498db;
+        color: white;
+    }
+    .filter-button.active {
+        background: #2980b9;
+        color: white;
+    }
+    .patient-section {
+        background: white;
+        margin: 15px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .patient-header {
+        padding: 15px 20px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        color: #2980b9;
+        display: flex;
+        justify-content: space-between;
+    }
+    .toggle-icon {
+        transition: transform 0.3s ease;
+    }
+    .details {
+        display: none;
+        padding: 0 20px 15px;
+        animation: fadeIn 0.3s ease;
+        white-space: pre-line;
+        font-family: monospace;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    .category {
+        margin-top: 15px;
+    }
+    .category-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #555;
+    }
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    li {
+        background: #f0f0f0;
+        margin: 4px 0;
+        padding: 8px 12px;
+        border-radius: 4px;
+        white-space: normal;
+    }
+    .success-status {
+        color: green;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    .failure-status {
+        color: red;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+</style>
+<script>
+function toggleDetails(id, iconId) {
+    const section = document.getElementById(id);
+    const icon = document.getElementById(iconId);
+    const isOpen = section.style.display === "block";
+    section.style.display = isOpen ? "none" : "block";
+    icon.style.transform = isOpen ? "rotate(0deg)" : "rotate(90deg)";
+}
+
+function applyFilter(filter) {
+    const sections = document.querySelectorAll('.patient-section');
+    sections.forEach(section => {
+        const filters = section.dataset.filters.split(',').map(f => f.trim().toLowerCase());
+        const filterLower = filter.toLowerCase();
+        const match = filter === "All" || filters.includes(filterLower);
+        section.style.display = match ? "block" : "none";
+    });
+    const buttons = document.querySelectorAll('.filter-button');
+    buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.textContent === filter);
+    });
+}
+
+window.onload = function() {
+    applyFilter('All');
+};
+</script>
+</head>
+<body>
+
+<h1>Patient Output File Summary</h1>
+
+<div class="filter-buttons">
+    <button class="filter-button" onclick="applyFilter('All')">All</button>
+    <button class="filter-button" onclick="applyFilter('Output File Generated')">Output File Generated</button>
+    <button class="filter-button" onclick="applyFilter('Failure')">Failure</button>
+    <button class="filter-button" onclick="applyFilter('Available (Both 2.25 UIDs)')">Available (Both 2.25 UIDs)</button>
+    <button class="filter-button" onclick="applyFilter('Available (Series 2.25 Only)')">Available (Series 2.25 Only)</button>
+    <button class="filter-button" onclick="applyFilter('Available (SOP 2.25 Only)')">Available (SOP 2.25 Only)</button>
+    <button class="filter-button" onclick="applyFilter('Available (Neither 2.25)')">Available (Neither 2.25)</button>
+</div>
+<div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_0', 'icon_0')">"A943850E" - "A943850E_CT" <span id="icon_0" class="toggle-icon">&#9654;</span></div><div id="details_0" class="details"><div class="failure-status">Response Status: Failure — Unknown error</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_1', 'icon_1')">"A943850E" - "A943850E_CT" <span id="icon_1" class="toggle-icon">&#9654;</span></div><div id="details_1" class="details"><div class="failure-status">Response Status: Failure — Unknown error</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_2', 'icon_2')">"A943850E" - "A943850E_CT" <span id="icon_2" class="toggle-icon">&#9654;</span></div><div id="details_2" class="details"><div class="failure-status">Response Status: Failure — Unknown error</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_3', 'icon_3')">"A943850E" - "A943850E_CT" <span id="icon_3" class="toggle-icon">&#9654;</span></div><div id="details_3" class="details"><div class="failure-status">Response Status: Failure — Unknown error</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_4', 'icon_4')">"A943850E" - "A943850E_CT" <span id="icon_4" class="toggle-icon">&#9654;</span></div><div id="details_4" class="details"><div class="failure-status">Response Status: Failure — Unknown error</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_5', 'icon_5')">"A943850E" - "A943850E_CT" <span id="icon_5" class="toggle-icon">&#9654;</span></div><div id="details_5" class="details"><div class="failure-status">Response Status: Failure — Unknown error</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="output file generated,available (neither 2.25)"><div class="patient-header" onclick="toggleDetails('details_6', 'icon_6')">"7B7A7B1C" - "7B7A7B1C_CT" <span id="icon_6" class="toggle-icon">&#9654;</span></div><div id="details_6" class="details"><div class="success-status">Response Status: Success</div><div>✅ Output File(s) Generated:<br><ul><li>json — Available — Non-DICOM output file</li><li>pr — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.11247619992293690244055466770799031244<br>1.2.826.0.1.3680043.8.498.44225460945937523196549384758404135416</li><li>gsps — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.83563962491131953915788704711312735837<br>1.2.826.0.1.3680043.8.498.12858946851033896457857388259475313401</li><li>sc — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.56184897302784354297940557620897385154<br>1.2.276.0.7230010.3.1.4.313262592.28572.1748253858.602552</li><li>sc_key_slices — Available — only SOPInstanceUID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.62731693366613056085088331785586437893<br>2.25.576204036591778334718283896807782904823</li></ul></div><div>❌ Output File(s) Not Generated:<br><ul><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>encapsulated_pdf — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="output file generated,available (neither 2.25)"><div class="patient-header" onclick="toggleDetails('details_7', 'icon_7')">"7B7A7B1C" - "7B7A7B1C_CT" <span id="icon_7" class="toggle-icon">&#9654;</span></div><div id="details_7" class="details"><div class="success-status">Response Status: Success</div><div>✅ Output File(s) Generated:<br><ul><li>json — Available — Non-DICOM output file</li><li>pr — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.55227625836531317817622503484321756873<br>1.2.826.0.1.3680043.8.498.80591072939724227666741849355243925385</li><li>gsps — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.83308123949428494330239358125161683159<br>1.2.826.0.1.3680043.8.498.13240893819174989743766738182163551140</li><li>sc — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.86305386117519258412192707093045664460<br>1.2.276.0.7230010.3.1.4.313263104.15544.1748253459.980399</li><li>sc_key_slices — Available — only SOPInstanceUID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.66155849982553008076552922663986340186<br>2.25.824862060568911067095675791340816874602</li></ul></div><div>❌ Output File(s) Not Generated:<br><ul><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>encapsulated_pdf — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="output file generated,available (neither 2.25)"><div class="patient-header" onclick="toggleDetails('details_8', 'icon_8')">"7B7A7B1C" - "7B7A7B1C_CT" <span id="icon_8" class="toggle-icon">&#9654;</span></div><div id="details_8" class="details"><div class="success-status">Response Status: Success</div><div>✅ Output File(s) Generated:<br><ul><li>json — Available — Non-DICOM output file</li><li>gsps — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.82034791569041783089086716642203640696<br>1.2.826.0.1.3680043.8.498.72548427047300750842933546218952062423</li><li>sc — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.59180997486770401061323303848980082366<br>1.2.276.0.7230010.3.1.4.313262592.1035.1748253134.487367</li><li>sc_key_slices — Available — only SOPInstanceUID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.13020052719552254532002927507546200488<br>2.25.189979567532245095531829501499709872215</li></ul></div><div>❌ Output File(s) Not Generated:<br><ul><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>encapsulated_pdf — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="output file generated,available (neither 2.25)"><div class="patient-header" onclick="toggleDetails('details_9', 'icon_9')">"CA58B01F" - "CA58B01F_CT" <span id="icon_9" class="toggle-icon">&#9654;</span></div><div id="details_9" class="details"><div class="success-status">Response Status: Success</div><div>✅ Output File(s) Generated:<br><ul><li>json — Available — Non-DICOM output file</li><li>gsps — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.12757224709902981283395631750618507876<br>1.2.826.0.1.3680043.8.498.45084724813506557706448432168728469694</li><li>sc — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.11802873349321671568871338993758888812<br>1.2.276.0.7230010.3.1.4.313264640.17978.1748253206.273425</li><li>sc_key_slices — Available — only SOPInstanceUID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.12451658941972524193149888621094702953<br>2.25.955535928214912672226905863202553642878</li></ul></div><div>❌ Output File(s) Not Generated:<br><ul><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>encapsulated_pdf — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="output file generated,available (neither 2.25)"><div class="patient-header" onclick="toggleDetails('details_10', 'icon_10')">"CA58B01F" - "CA58B01F_CT" <span id="icon_10" class="toggle-icon">&#9654;</span></div><div id="details_10" class="details"><div class="success-status">Response Status: Success</div><div>✅ Output File(s) Generated:<br><ul><li>json — Available — Non-DICOM output file</li><li>gsps — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.15471502352813837520338916527107951818<br>1.2.826.0.1.3680043.8.498.11542680264956606777578757206062709394</li><li>sc — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.43856848956845271879969929966694335922<br>1.2.276.0.7230010.3.1.4.313264384.36702.1748253713.579410</li><li>sc_key_slices — Available — only SOPInstanceUID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.14934191695444702453143009630619420169<br>2.25.859610134209438458681705639419589358061</li></ul></div><div>❌ Output File(s) Not Generated:<br><ul><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>encapsulated_pdf — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="output file generated,available (neither 2.25)"><div class="patient-header" onclick="toggleDetails('details_11', 'icon_11')">"CA58B01F" - "CA58B01F_CT" <span id="icon_11" class="toggle-icon">&#9654;</span></div><div id="details_11" class="details"><div class="success-status">Response Status: Success</div><div>✅ Output File(s) Generated:<br><ul><li>json — Available — Non-DICOM output file</li><li>gsps — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.55721527619446446004168107550549960966<br>1.2.826.0.1.3680043.8.498.60019386036024827995457774353875522949</li><li>sc — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.11640535338589617347865509084811698911<br>1.2.276.0.7230010.3.1.4.313264640.30150.1748253580.158648</li><li>sc_key_slices — Available — only SOPInstanceUID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.58750419199612605520226369191033802661<br>2.25.565514548364776026462770207399301054508</li></ul></div><div>❌ Output File(s) Not Generated:<br><ul><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>encapsulated_pdf — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_12', 'icon_12')">"D2974F0F" - "D2974F0F_CT" <span id="icon_12" class="toggle-icon">&#9654;</span></div><div id="details_12" class="details"><div class="failure-status">Response Status: Failure — Image Series with resource_uid 1.2.826.0.1.3680043.8.498.10163909741150784007953121043355100207 is under process. Please check back in some time.</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_13', 'icon_13')">"D2974F0F" - "D2974F0F_CT" <span id="icon_13" class="toggle-icon">&#9654;</span></div><div id="details_13" class="details"><div class="failure-status">Response Status: Failure — Image Series with resource_uid 1.2.826.0.1.3680043.8.498.18432812901450765430033734157227075588 is under process. Please check back in some time.</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_14', 'icon_14')">"D2974F0F" - "D2974F0F_CT" <span id="icon_14" class="toggle-icon">&#9654;</span></div><div id="details_14" class="details"><div class="failure-status">Response Status: Failure — Image Series with resource_uid 1.2.826.0.1.3680043.8.498.26160922501777990637062892151080201420 is under process. Please check back in some time.</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_15', 'icon_15')">"D2974F0F" - "D2974F0F_CT" <span id="icon_15" class="toggle-icon">&#9654;</span></div><div id="details_15" class="details"><div class="failure-status">Response Status: Failure — Image Series with resource_uid 1.2.826.0.1.3680043.8.498.14847016656902247038194252763082542436 is under process. Please check back in some time.</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_16', 'icon_16')">"D2974F0F" - "D2974F0F_CT" <span id="icon_16" class="toggle-icon">&#9654;</span></div><div id="details_16" class="details"><div class="failure-status">Response Status: Failure — Image Series with resource_uid 1.2.826.0.1.3680043.8.498.42462135006239016854880271011894734266 is under process. Please check back in some time.</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_17', 'icon_17')">"D2974F0F" - "D2974F0F_CT" <span id="icon_17" class="toggle-icon">&#9654;</span></div><div id="details_17" class="details"><div class="failure-status">Response Status: Failure — Image Series with resource_uid 1.2.826.0.1.3680043.8.498.30819883315690659855381979333508988390 is under process. Please check back in some time.</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_18', 'icon_18')">"D2974F0F" - "D2974F0F_CT" <span id="icon_18" class="toggle-icon">&#9654;</span></div><div id="details_18" class="details"><div class="failure-status">Response Status: Failure — Image Series with resource_uid 1.2.826.0.1.3680043.8.498.67497747095800224044724441458861422987 is under process. Please check back in some time.</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_19', 'icon_19')">"D2974F0F" - "D2974F0F_CT" <span id="icon_19" class="toggle-icon">&#9654;</span></div><div id="details_19" class="details"><div class="failure-status">Response Status: Failure — Image Series with resource_uid 1.2.826.0.1.3680043.8.498.45695593287459799615204735104065274745 is under process. Please check back in some time.</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_20', 'icon_20')">"D2974F0F" - "D2974F0F_CT" <span id="icon_20" class="toggle-icon">&#9654;</span></div><div id="details_20" class="details"><div class="failure-status">Response Status: Failure — Image Series with resource_uid 1.2.826.0.1.3680043.8.498.43470554726737042714304036966777390658 is under process. Please check back in some time.</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_21', 'icon_21')">"3DC6901B" - "3DC6901B_CT" <span id="icon_21" class="toggle-icon">&#9654;</span></div><div id="details_21" class="details"><div class="failure-status">Response Status: Failure — Image Series with resource_uid 1.2.826.0.1.3680043.8.498.88496937811634798040124530143516666111 is under process. Please check back in some time.</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_22', 'icon_22')">"79BF785E" - "79BF785E_CT" <span id="icon_22" class="toggle-icon">&#9654;</span></div><div id="details_22" class="details"><div class="failure-status">Response Status: Failure — Image Series with resource_uid 1.2.826.0.1.3680043.8.498.91347046943019391738446409179115154249 is under process. Please check back in some time.</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="output file generated,available (neither 2.25)"><div class="patient-header" onclick="toggleDetails('details_23', 'icon_23')">"E252021B" - "E252021B_CT" <span id="icon_23" class="toggle-icon">&#9654;</span></div><div id="details_23" class="details"><div class="success-status">Response Status: Success</div><div>✅ Output File(s) Generated:<br><ul><li>json — Available — Non-DICOM output file</li><li>gsps — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.12942642106462659379294766173185051810<br>1.2.826.0.1.3680043.8.498.81066823186313030404712169007028415701</li><li>sc — Available — neither UID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.12490992504048377311296204357797560606<br>1.2.276.0.7230010.3.1.4.313262592.37791.1748260835.175468</li><li>sc_key_slices — Available — only SOPInstanceUID starts with 2.25 <br>1.2.826.0.1.3680043.8.498.63641900485786817135762452978326827016<br>2.25.379599509373381399719192911193970714611</li></ul></div><div>❌ Output File(s) Not Generated:<br><ul><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>encapsulated_pdf — unavailable</li></ul></div></div></div><div class="patient-section" data-filters="failure"><div class="patient-header" onclick="toggleDetails('details_24', 'icon_24')">"028DCAE9" - "028DCAE9_CT" <span id="icon_24" class="toggle-icon">&#9654;</span></div><div id="details_24" class="details"><div class="failure-status">Response Status: Failure — Image Series with resource_uid 1.2.826.0.1.3680043.8.498.49372072950313731722610162629582806797 is under process. Please check back in some time.</div><div>❌ Output File(s) Not Generated:<br><ul><li>json — unavailable</li><li>pr — unavailable</li><li>sr — unavailable</li><li>hl7 — unavailable</li><li>pdf — unavailable</li><li>seg — unavailable</li><li>gsps — unavailable</li><li>encapsulated_pdf — unavailable</li><li>sc — unavailable</li><li>sc_key_slices — unavailable</li></ul></div></div></div>
+</body>
+</html>
