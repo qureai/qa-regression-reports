@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lung Cancer AI Platform Presentation</title>
+  <style>
+    body {
+      background: #181f2a;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+    .slider-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: #181f2a;
+    }
+    .slide {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0; left: 0;
+      transition: opacity 0.5s;
+      z-index: 1;
+    }
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      z-index: 2;
+    }
+    .slide-text {
+      width: 70vw;
+      max-width: 800px;
+      background: rgba(24,31,42,0.92);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      border-radius: 20px;
+      padding: 1.5rem 2rem 1.2rem 2rem;
+      color: #fff;
+      margin-bottom: 2.5vh;
+      margin-top: 5vh;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .slide-title {
+      font-size: 2.1rem;
+      font-weight: bold;
+      color: #00e6e6;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+      text-transform: capitalize;
+    }
+    .slide-subtitle {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 1.1rem;
+      opacity: 0.85;
+      text-transform: none;
+    }
+    .slide-bullets {
+      font-size: 1.05rem;
+      color: #e0e6ed;
+      margin-bottom: 1.2rem;
+      padding-left: 1.2rem;
+    }
+    .slide-bullets li {
+      margin-bottom: 0.7rem;
+      line-height: 1.5;
+      text-transform: none;
+    }
+    .callout {
+      background: linear-gradient(90deg, #00b3b3 60%, #009999 100%);
+      color: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      padding: 0.7rem 1.2rem;
+      font-size: 1.01rem;
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+      margin-top: auto;
+      display: inline-block;
+      letter-spacing: 0.2px;
+    }
+    .slide-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70vw;
+      max-width: 900px;
+      height: 50vh;
+      min-height: 200px;
+      margin-bottom: 0;
+      margin-top: 0;
+      position: relative;
+    }
+    .slide-image img {
+      max-width: 70vw;
+      max-height: 50vh;
+      width: auto;
+      height: auto;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      background: #fff;
+      object-fit: contain;
+      transition: box-shadow 0.3s;
+      margin-right: 1vw;
+    }
+    .slide-multi-image {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 70vw;
+      max-width: 900px;
+      max-height: 50vh;
+      min-height: 200px;
+      margin-bottom: 0;
+      margin-top: 0;
+      position: relative;
+      gap: 1vw;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: #00b3b3 #222;
+      background: rgba(24,31,42,0.85);
+      border-radius: 14px;
+    }
+    .slide-multi-image img {
+      max-width: 70vw;
+      max-height: 50vh;
+      width: auto;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      background: #fff;
+      object-fit: contain;
+      transition: box-shadow 0.3s;
+      margin-bottom: 1vh;
+    }
+    .slide-hero-info {
+      width: 70vw;
+      max-width: 900px;
+      height: 50vh;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(24,31,42,0.92);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      color: #00e6e6;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-top: 0;
+      margin-bottom: 0;
+      text-align: center;
+      gap: 1.2rem;
+    }
+    .slide-hero-info .hero-icon {
+      font-size: 4.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .slide-hero-info .hero-subtitle {
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      opacity: 0.9;
+    }
+    .slide-hero-info .hero-message {
+      color: #e0e6ed;
+      font-size: 1.1rem;
+      font-weight: 400;
+      opacity: 0.95;
+      margin-bottom: 0.5rem;
+    }
+    .slide-celebrate {
+      width: 70vw;
+      max-width: 900px;
+      height: 50vh;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #00e6e6 0%, #6a5af9 100%);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      color: #fff;
+      font-size: 2.7rem;
+      font-weight: 900;
+      margin-top: 0;
+      margin-bottom: 0;
+      text-align: center;
+      gap: 1.2rem;
+      position: relative;
+    }
+    .slide-celebrate .celebrate-icon {
+      font-size: 5.5rem;
+      margin-bottom: 0.5rem;
+      animation: pulse 1.5s infinite;
+    }
+    .slide-celebrate .celebrate-message {
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      opacity: 0.98;
+      text-shadow: 0 2px 12px #00e6e6, 0 4px 24px #6a5af9;
+    }
+    .slide-celebrate .confetti {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 100%;
+      font-size: 2.2rem;
+      pointer-events: none;
+      user-select: none;
+      text-align: center;
+      opacity: 0.85;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+      100% { transform: scale(1); }
+    }
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      color: #00e6e6;
+      background: rgba(24,31,42,0.7);
+      border: none;
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      user-select: none;
+    }
+    .arrow:hover {
+      background: #00e6e6;
+      color: #181f2a;
+    }
+    .arrow.left { left: 2vw; }
+    .arrow.right { right: 2vw; }
+    .slide-counter {
+      position: absolute;
+      top: 2vh;
+      right: 4vw;
+      color: #00e6e6;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background: rgba(24,31,42,0.7);
+      padding: 0.5rem 1.2rem;
+      border-radius: 16px;
+      z-index: 20;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 900px) {
+      .slide-text {
+        width: 98vw;
+        max-width: 98vw;
+        min-width: 0;
+        padding: 1.2rem 1.2rem 1rem 1.2rem;
+        margin-top: 2vh;
+      }
+      .slide-title { font-size: 1.1rem; }
+      .slide-subtitle { font-size: 0.95rem; }
+      .slide-bullets { font-size: 0.98rem; }
+      .callout { font-size: 0.93rem; }
+      .slide-image {
+        width: 98vw;
+        max-width: 98vw;
+        height: 28vh;
+        min-height: 100px;
+      }
+      .slide-image img {
+        max-width: 98vw;
+        max-height: 28vh;
+      }
+      .slide-multi-image {
+        width: 98vw;
+        max-width: 98vw;
+        height: 28vh;
+        min-height: 100px;
+        gap: 2vw;
+      }
+      .slide-multi-image img {
+        max-width: 98vw;
+        max-height: 28vh;
+      }
+      .slide-hero-info {
+        width: 98vw;
+        max-width: 98vw;
+        height: 28vh;
+        font-size: 1.3rem;
+        padding: 0.5rem;
+      }
+      .slide-hero-info .hero-icon { font-size: 2.5rem; }
+      .slide-hero-info .hero-subtitle { font-size: 1rem; }
+      .slide-hero-info .hero-message { font-size: 0.95rem; }
+      .slide-celebrate {
+        width: 98vw;
+        max-width: 98vw;
+        height: 28vh;
+        font-size: 1.3rem;
+        padding: 0.5rem;
+      }
+      .slide-celebrate .celebrate-icon { font-size: 2.5rem; }
+      .slide-celebrate .celebrate-message { font-size: 1rem; }
+      .arrow { font-size: 2.2rem; width: 44px; height: 44px; }
+      .slide-counter { font-size: 1rem; padding: 0.3rem 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="slider-container">
+  <div class="arrow left" onclick="prevSlide()">&#8592;</div>
+  <div class="arrow right" onclick="nextSlide()">&#8594;</div>
+  <div class="slide-counter" id="slideCounter"></div>
+</div>
+<script>
+const slides = [
+  {
+    title: "Unified AI Platform for Physicians",
+    subtitle: "Empowering physicians with data, AI, and collaboration",
+    bullets: [
+      "All patient data, imaging, and AI insights in one place.",
+      "Designed for fast, informed clinical decisions.",
+      "Modern, intuitive interface for busy care teams."
+    ],
+    image: "image (2).png",
+    callout: "Business value: Streamlines workflow, reduces errors, and accelerates care.",
+    hero: true
+  },
+  {
+    title: "Who Are Qure's Users?",
+    subtitle: "Key stakeholders in the care journey",
+    bullets: [
+      "Radiologists: Review DICOMs, generate reports, and flag findings.",
+      "Nurses: Manage scheduling, admin, and patient communication.",
+      "Physicians: Track visits, risk, and prepare for tumor boards."
+    ],
+    image: "image (3).png",
+    callout: "Focus: Built for physicians, but valuable for the whole care team."
+  },
+  {
+    title: "Built for Physicians",
+    subtitle: "All critical data at your fingertips",
+    bullets: [
+      "Unified dashboard: See diagnostics, images, and reports instantly.",
+      "AI-generated summaries and risk scores for every patient.",
+      "Quick access to key clinical information and history."
+    ],
+    image: "image (5).png",
+    callout: "AI/LLM value: Saves time, reduces cognitive load, and supports better decisions."
+  },
+  {
+    title: "Key Features for Physicians",
+    subtitle: "AI-driven clinical workflow",
+    bullets: [
+      "Transcription: Record and save meeting notes automatically.",
+      "AI imaging: Instantly view key slices and findings from radiology.",
+      "Literature search: Find relevant research and case studies in seconds."
+    ],
+    image: "image (8).png",
+    callout: "Business value: All-in-one workflow for clinical efficiency and accuracy."
+  },
+  {
+    title: "LLM1: Reducing Backend Dependency",
+    subtitle: "Prompt-driven, flexible frontend",
+    bullets: [
+      "Works with any data source: EHR, voice, photos, or APIs.",
+      "Rapid go-live: Focus on prompt engineering, not backend integration.",
+      "Easily scalable for new features and data types."
+    ],
+    image: "image (16).png",
+    callout: "Business value: Faster deployment, lower IT costs, and future-proof design."
+  },
+  {
+    title: "LLM1: Risk Profiling & Incidental Findings",
+    subtitle: "AI-driven patient risk stratification",
+    bullets: [
+      "Automatically flags at-risk patients for lung cancer and more.",
+      "Risk profiling based on imaging, symptoms, and test results.",
+      "Easily extendable to new findings with prompt updates."
+    ],
+    image: "image (6).png",
+    callout: "AI/LLM value: Proactive care and early intervention for better outcomes."
+  },
+  {
+    title: "LLM1: Live Demo & Synthetic Patients",
+    subtitle: "Instant, realistic patient scenarios",
+    bullets: [
+      "Generate demo patients on the fly for client presentations.",
+      "Summarize and risk-stratify in real time using LLMs.",
+      "Ready for handover to clinical and sales teams."
+    ],
+    image: "image (14).png",
+    callout: "Business value: Engaging demos, rapid prototyping, and client confidence."
+  },
+  {
+    title: "LLM1: No More Manual Screenshots",
+    subtitle: "AI/LLM for key image extraction",
+    bullets: [
+      "LLM parses CT images to show key slices automatically.",
+      "Saves nurses and physicians from manual screenshotting.",
+      "Prioritizes images for clinical meetings in minutes."
+    ],
+    image: "image (4).png",
+    callout: "AI/LLM value: Streamlines prep for tumor boards and clinical reviews."
+  },
+  {
+    title: "LLM1: Smarter Clinical Decisions",
+    subtitle: "RAG-based literature & case search",
+    bullets: [
+      "Find similar cases and research instantly with RAG search.",
+      "Supports tumor board decisions with citations and context.",
+      "Delivers quality material for each patient's care plan."
+    ],
+    images: ["image (13).png", "image (12).png", "image (15).png"],
+    callout: "AI/LLM value: Evidence-based, context-aware recommendations."
+  },
+  {
+    title: "Summary & Next Steps",
+    subtitle: "Unified, AI-powered platform for lung cancer care",
+    bullets: [
+      "Value for the whole care team: physicians, nurses, and radiologists.",
+      "Flexible, scalable, and ready for new features and diseases.",
+      "Let's transform cancer care together!"
+    ],
+    image: "image (10).png",
+    callout: "Business value: Future-ready, impactful, and easy to adopt."
+  },
+  {
+    title: "We Are on Claude-9!",
+    subtitle: "Celebrating our next-level AI journey",
+    bullets: [],
+    callout: "",
+    celebrate: true
+  }
+];
+
+const slider = document.querySelector('.slider-container');
+let current = 0;
+
+function renderSlides() {
+  slider.querySelectorAll('.slide').forEach(s => s.remove());
+  slides.forEach((slide, idx) => {
+    const slideDiv = document.createElement('div');
+    slideDiv.className = 'slide' + (idx === current ? ' active' : '');
+    let imageHtml = '';
+    if (slide.hero) {
+      imageHtml = `<div class='slide-image'><img src='${slide.image}' alt='Platform hero' /></div>`;
+    } else if (slide.celebrate) {
+      imageHtml = `<div class='slide-celebrate'>
+        <div class='confetti'>✨🎉✨🎉✨</div>
+        <div class='celebrate-icon'>🚀</div>
+        <div class='celebrate-message'>Amazing being part of the hackathon! 🚀✨</div>
+        <div class='confetti'>✨🎉✨🎉✨</div>
+      </div>`;
+    } else if (slide.images) {
+      imageHtml = `<div class='slide-multi-image'>${slide.images.map(img => `<img src='${img}' alt='${slide.title} screenshot' />`).join('')}</div>`;
+    } else if (slide.image) {
+      imageHtml = `<div class='slide-image'><img src='${slide.image}' alt='${slide.title} screenshot' /></div>`;
+    } else {
+      imageHtml = `<div class='slide-hero-info'>
+        <div class='hero-icon'>🩺</div>
+        <div class='hero-subtitle'>Welcome to the Unified AI Platform for Lung Cancer Care</div>
+        <div class='hero-message'>Empowering physicians and care teams with all patient data, imaging, and AI insights in one place. Designed for fast, informed clinical decisions and seamless collaboration.</div>
+      </div>`;
+    }
+    slideDiv.innerHTML = `
+      <div class="slide-text">
+        <div class="slide-title">${slide.title}</div>
+        <div class="slide-subtitle">${slide.subtitle}</div>
+        <ul class="slide-bullets">
+          ${slide.bullets.map(b => `<li>${b}</li>`).join('')}
+        </ul>
+        <div class="callout">${slide.callout}</div>
+      </div>
+      ${imageHtml}
+    `;
+    slider.appendChild(slideDiv);
+  });
+  document.getElementById('slideCounter').textContent = `Slide ${current+1} / ${slides.length}`;
+}
+
+function showSlide(idx) {
+  if (idx < 0) idx = slides.length - 1;
+  if (idx >= slides.length) idx = 0;
+  current = idx;
+  renderSlides();
+}
+
+function prevSlide() { showSlide(current - 1); }
+function nextSlide() { showSlide(current + 1); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') prevSlide();
+  if (e.key === 'ArrowRight') nextSlide();
+});
+
+renderSlides();
+</script>
+</body>
+</html> 
